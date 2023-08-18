@@ -13,11 +13,11 @@ module datamemory #(
     output logic [DATA_W - 1:0] rd  // Read Data
 );
 
-  logic [31:0] raddress;
-  logic [31:0] waddress;
-  logic [31:0] Datain;
-  logic [31:0] Dataout;
-  logic [ 3:0] Wr;
+  logic [31:0] raddress; //endereço de leitura
+  logic [31:0] waddress; //endereço de escrita
+  logic [31:0] Datain; //dado a ser escrito
+  logic [31:0] Dataout; 
+  logic [ 3:0] Wr; //write enable - identifica se é escrita ou leitura
 
   Memoria32Data mem32 (
       .raddress(raddress),
