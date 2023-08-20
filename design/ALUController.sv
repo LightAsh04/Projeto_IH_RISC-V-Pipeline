@@ -15,7 +15,6 @@ module ALUController (
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
       ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) || // SUB
       ((ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000)) || // OR    ;  // R\I->>>
-      ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) || //XOR
       ((ALUOp == 2'b01) && (Funct3==3'b001)) ||  // BNE
       ((ALUOp == 2'b01) && (Funct3==3'b101));  // BGE
 
@@ -30,6 +29,7 @@ module ALUController (
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>
       ((ALUOp == 2'b10) && (Funct3 == 3'b001)) ||  // R\I-<<
       ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||
+      ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) || //XOR
       ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) ; // SUB // R\I-<
 
   assign Operation[3] = (ALUOp == 2'b01) && (Funct3==3'b000) ||  // BEQ
