@@ -22,15 +22,15 @@ module alu#(
             4'b0010:        // ADD 2
                     ALUResult = SrcA + SrcB;
             4'b0011: // SLLI 3
-                    ALUResult = SrcA << SrcB
+                    ALUResult = SrcA << SrcB;
             4'b0100: // SRLI 4
-                    ALUResult = SrcA >> SrcB
+                    ALUResult = SrcA >> SrcB;
             4'b0101:          //SUB 5
                     ALUResult = SrcA - SrcB;
             4'b0110: // SRAI 6 
-                    ALUResult = SrcA >>> SrcB
+                    ALUResult = SrcA >>> SrcB;
             4'b0111: // SLT 7
-                    ALUResult = SrcA < SrcB 
+                    ALUResult = SrcA < SrcB; 
             4'b1000:        // Equal 8
                     ALUResult = (SrcA == SrcB) ? 1 : 0;
             4'b1001: // Not Equal 9
