@@ -38,14 +38,14 @@ module datamemory #(
       case (Funct3)
         3'b010:  //LW
             rd <= Dataout;
-        3'b001:  //Lh
+        3'b001:  begin//Lh
             rd[15:0] <= Dataout[15:0];
-            if(Dataout[15] == 1) rd[31:16] <= 16{1'b1};
-            else rd[31:16] <= 16{1'b0};
-        3'b000:  //Lb
+            rd[31:16] <= Dataout[15] ? {16{1'b1}} : {16{1'b0}};
+        end
+        3'b000:  begin//Lb
             rd[7:0] <= Dataout[7:0];
-            if(Dataout[7] == 1) rd[31:8] <= 24{1'b1};
-            else rd[31:8] <= 24{1'b0};
+            rd[31:8] <= Dataout[7] ? {24{1'b1}} : {24{1'b0}};
+        end
         default: rd <= Dataout;
       endcase
     end else if (MemWrite) begin
