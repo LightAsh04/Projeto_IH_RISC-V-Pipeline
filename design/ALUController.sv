@@ -23,7 +23,7 @@ module ALUController (
 
   assign Operation[1] = (ALUOp == 2'b00) ||  // LW\SW
       ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000)) ||  // R\I-add
-      ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 != 7'b0000000)) ||// ADDI  // R\I->>>
+      ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 != 7'b0100000)) ||// ADDI  // R\I->>>
       //((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
       ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) || // SLLI
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) || // SRAI
