@@ -28,7 +28,7 @@ module alu#(
             4'b0101:          //SUB 5
                     ALUResult = SrcA - SrcB;
             4'b0110: // SRAI 6 
-                    ALUResult = SrcA >>> SrcB;
+                    ALUResult = $signed(SrcA) >>> SrcB;
             4'b0111: // SLT 7
                     ALUResult = SrcA < SrcB; 
             4'b1000:        // Equal 8
