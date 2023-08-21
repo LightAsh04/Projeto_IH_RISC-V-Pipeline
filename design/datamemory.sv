@@ -37,10 +37,10 @@ module datamemory #(
     if (MemRead) begin
       case (Funct3)
         3'b010:  //LW
-        rd <= Dataout;
-        3'b001:  //LB
+            rd <= Dataout;
+        3'b001:  //Lh
             rd <= {{16{1'b0}}, Dataout[15:0]};
-        3'b000:  //LH
+        3'b000:  //Lb
             rd <= {{24{1'b0}}, Dataout[7:0]};
         default: rd <= Dataout;
       endcase
