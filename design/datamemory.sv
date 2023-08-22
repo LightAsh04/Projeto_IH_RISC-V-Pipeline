@@ -36,7 +36,7 @@ module datamemory #(
 
     if (MemRead) begin
       case (Funct3)
-        3'b100: begin //LBU
+        3'b100: begin //lbu
             rd[7:0] <= Dataout[7:0];
             rd[31:8] <= {24{1'b0}};
         end
@@ -44,11 +44,11 @@ module datamemory #(
             rd <= Dataout;
         3'b001:  begin//Lh
             rd[15:0] <= Dataout[15:0];
-            rd[31:16] <= {Dataout[15] ? 16{1'b1} : 16{1'b0}};
+            rd[31:16] <= {signed(Dataout[15:0]) ? {16{1'b1}} : {16{1'b0}}};
         end
         3'b000:  begin//Lb
             rd[7:0] <= Dataout[7:0];
-            rd[31:8] <= {Dataout[7] ? 24{1'b1} : 24{1'b0}};
+            rd[31:8] <= (signed(Dataout[7:0]) ? {24{1'b1}} : {24{1'b0}});
         end
         default: rd <= Dataout;
       endcase
