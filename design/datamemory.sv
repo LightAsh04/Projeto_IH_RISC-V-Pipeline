@@ -37,8 +37,7 @@ module datamemory #(
     if (MemRead) begin
       case (Funct3)
         3'b100: begin //lbu
-            rd[7:0] <= Dataout[7:0];
-            rd[31:8] <= {24{1'b0}};
+            rd <= $unsigned(Dataout[7:0]);
         end
         3'b010:  //LW
             rd <= Dataout;
