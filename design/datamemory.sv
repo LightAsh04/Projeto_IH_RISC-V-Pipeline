@@ -13,11 +13,11 @@ module datamemory #(
     output logic [DATA_W - 1:0] rd  // Read Data
 );
 
-  logic [31:0] raddress; //endereço de leitura
-  logic [31:0] waddress; //endereço de escrita
+  logic [31:0] raddress; //endereÃ§o de leitura
+  logic [31:0] waddress; //endereÃ§o de escrita
   logic [31:0] Datain; //dado a ser escrito
   logic [31:0] Dataout; 
-  logic [ 3:0] Wr; //write enable - identifica se é escrita ou leitura
+  logic [ 3:0] Wr; //write enable - identifica se Ã© escrita ou leitura
 
   Memoria32Data mem32 (
       .raddress(raddress),
@@ -43,12 +43,10 @@ module datamemory #(
         3'b010:  //LW
             rd <= Dataout;
         3'b001:  begin//Lh
-            rd[15:0] <= Dataout[15:0];
-            rd[31:16] <= {signed(Dataout[15:0]) ? {16{1'b1}} : {16{1'b0}}};
+            rd <= $signed(Dataout[15:0]);
         end
         3'b000:  begin//Lb
-            rd[7:0] <= Dataout[7:0];
-            rd[31:8] <= (signed(Dataout[7:0]) ? {24{1'b1}} : {24{1'b0}});
+            rd <= $signed(Dataout[7:0]);
         end
         default: rd <= Dataout;
       endcase
