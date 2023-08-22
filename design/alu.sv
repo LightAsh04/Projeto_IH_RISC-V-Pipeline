@@ -41,6 +41,8 @@ module alu#(
                     ALUResult = (SrcA >= SrcB) ? 1 : 0;
             4'b1100: // xor 12
                    ALUResult = SrcA ^ SrcB;
+           4'b1101: // LUI 13
+                   ALUResult = SrcB;
             default:
                     ALUResult = 0;
             endcase
