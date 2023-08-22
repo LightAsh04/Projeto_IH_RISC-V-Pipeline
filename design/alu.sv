@@ -21,7 +21,7 @@ module alu#(
                     ALUResult = SrcA | SrcB;
             4'b0010:        // ADD 2
                     ALUResult = SrcA + SrcB;
-            4'b0011: // SLLI 3 *
+            4'b0011: // SLLI 3 
                     ALUResult = SrcA << SrcB;
             4'b0100: // SRLI 4
                     ALUResult = SrcA >> SrcB;

@@ -37,7 +37,7 @@ module ALUController (
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) || // SRLI
       ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) ||  // SUB // R\I-<
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000))|| // SRAI
-      ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0100000)) ||
+      //((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0100000)) ||
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000))|| // SLT
       ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000));//XOR
        
