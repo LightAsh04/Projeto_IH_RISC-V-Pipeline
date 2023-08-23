@@ -37,7 +37,7 @@ module datamemory #(
     if (MemRead) begin
       case (Funct3)
         3'b100: begin //lbu
-            rd <= $unsigned(Dataout[7:0]);
+            rd <= {24'b0, Dataout[7:0]};
         end
         3'b010:  //LW
             rd <= Dataout;
@@ -54,6 +54,14 @@ module datamemory #(
         3'b010: begin  //SW
           Wr <= 4'b1111;
           Datain <= wd;
+        end
+        3'b000: begin // SB
+          Wr <= 4'b0100;
+          Datain[7:0] <= wd;
+        end
+        3'b001: begin //SH
+          Wr <= 4'b1100;
+          Datain[15:0] <= wd;
         end
         default: begin
           Wr <= 4'b1111;
