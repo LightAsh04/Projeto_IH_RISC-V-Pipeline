@@ -43,6 +43,8 @@ module alu#(
                    ALUResult = SrcA ^ SrcB;
            4'b1101: // LUI 13
                    ALUResult = SrcB;
+           4'b1110: // SLTI 14
+                    ALUResult = ($signed(SrcA) < SrcB[4:0]) ? 1 : 0;
             default:
                     ALUResult = 0;
             endcase
