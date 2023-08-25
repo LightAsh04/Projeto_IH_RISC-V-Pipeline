@@ -14,6 +14,7 @@ package Pipe_Buf_Reg_PKG;
     logic        MemRead;
     logic        MemWrite;
     logic [1:0]  ALUOp;
+    logic        Halt;
     logic        Branch;
     logic        JalrSel;
     logic [8:0]  Curr_Pc;
