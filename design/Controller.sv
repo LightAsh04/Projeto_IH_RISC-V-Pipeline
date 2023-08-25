@@ -6,6 +6,7 @@ module Controller (
     //7-bit opcode field from the instruction
 
     //Outputs
+    output logic Halt,
     output logic ALUSrc,
     //0: The second ALU operand comes from the second register file output (Read data 2); 
     //1: The second ALU operand is the sign-extended, lower 16 bits of the instruction.
@@ -21,7 +22,7 @@ module Controller (
     output logic JalrSel
 );
 
-  logic [6:0] R_TYPE, LW, SW, BR,I_TYPE, U_TYPE, JAL, JALR;
+    logic [6:0] R_TYPE, LW, SW, BR,I_TYPE, U_TYPE, JAL, JALR, HALT;
 
   assign R_TYPE = 7'b0110011;  //add,and
   assign I_TYPE = 7'b0010011; // addi e companhia
@@ -31,7 +32,7 @@ module Controller (
   assign BR = 7'b1100011;  //beq
   assign JAL = 7'b1101111; //jal
   assign JALR = 7'b1100111;//jalr
-  assign HALT=  7'b0000000; // halt
+  assign HALT=  7'b1111111; // halt
 
   assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == U_TYPE || Opcode == JALR);
   assign MemtoReg = (Opcode == LW);
@@ -43,4 +44,5 @@ module Controller (
   assign Branch = (Opcode == BR);
   assign JaltoReg = (Opcode == JAL) || (Opcode == JALR);
   assign JalrSel = (Opcode == JALR);
+  assign Halt =    (Opcode == HALT);
 endmodule
