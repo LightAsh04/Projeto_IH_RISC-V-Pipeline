@@ -27,6 +27,6 @@ module BranchUnit #(
   assign Branch_Sel = JaltoReg || (Branch && AluResult[0]);  // 0:Branch is taken; 1:Branch is not taken
 
   assign BrPC = (Branch_Sel) ? PC_Imm : ((Halt_sel) ? PC_Full : 32'b0);  // Branch -> PC+Imm   // Otherwise, BrPC value is not important
-  assign PcSel = Branch_Sel || JaltoReg;  // 1:branch is taken; 0:branch is not taken(choose pc+4)
+  assign PcSel = Branch_Sel || JaltoReg || Halt_sel ;  // 1:branch is taken; 0:branch is not taken(choose pc+4)
 
 endmodule
