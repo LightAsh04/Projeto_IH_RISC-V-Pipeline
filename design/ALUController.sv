@@ -19,7 +19,7 @@ module ALUController (
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000))|| // SLT
       ((ALUOp == 2'b01) && (Funct3==3'b001)) ||  // BNE
       ((ALUOp == 2'b01) && (Funct3==3'b101)) || // BGE
-      (ALUOp == 2'b11) || // LUI
+      ((ALUOp == 2'b11) && (Funct3!=3'b000)) || // LUI
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0000000)); // SLTI
       
 
@@ -30,7 +30,7 @@ module ALUController (
       ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) || // SLLI
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) || // SRAI
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000))|| // SLT
-      ((ALUOp == 2'b10) && (Funct3==3'b000)) || //JALR
+      ((ALUOp == 2'b11) && (Funct3==3'b000)) || //JALR
       ((ALUOp == 2'b01) && (Funct3==3'b100)) ||  // BLT
       ((ALUOp == 2'b01) && (Funct3==3'b101)) || // BGE
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0000000)); // SLTI
@@ -45,7 +45,7 @@ module ALUController (
       //((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0100000)) ||
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000))|| // SLT
       ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) || //XOR
-      (ALUOp == 2'b11) || // LUI
+      ((ALUOp == 2'b11) && (Funct3!=3'b000)) || // LUI
       ((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0000000)); // SLTI
       
        
@@ -56,7 +56,7 @@ module ALUController (
       ((ALUOp == 2'b01) && (Funct3==3'b101)) ||  // BGE
       //((ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 != 7'b0100000)) ||
       ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) || // XOR
-      (ALUOp == 2'b11); // LUI
+      ((ALUOp == 2'b11) && (Funct3!=3'b000)); // LUI
       
       
        
